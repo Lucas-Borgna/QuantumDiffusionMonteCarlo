@@ -11,13 +11,13 @@ For example, DMCv3SimplePotentials2.cpp contains the toy examples with many know
 
 to compile: 
 
-'''
+```
 g++ DMCv3SimplePotentials2.cpp -o SimplePotentials
-'''
+```
 Or
 
-'''
+```
 g++ DMCv3HolsteinDimerSource.cpp -o HolsteinDimer
-'''
+```
 
 Hopefully this project will be brought up to better standards soon.
