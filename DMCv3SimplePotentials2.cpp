@@ -8,6 +8,7 @@
 #include <random>
 #include <ctime>
 #include <cstdio>
+#include "functions.h"
 
 using namespace std;
 
@@ -260,7 +261,7 @@ void Bias_distribution(long double walkerpos[], long double& dt, long double& no
 	}
 }
 
-
+/*
 void progress_bar(int sim_num, long double total_time, long double current_time)
 {
 	double progress = current_time / total_time;
@@ -280,6 +281,7 @@ void progress_bar(int sim_num, long double total_time, long double current_time)
 	cout.flush();
 
 }
+*/
 
 int main()
 {
