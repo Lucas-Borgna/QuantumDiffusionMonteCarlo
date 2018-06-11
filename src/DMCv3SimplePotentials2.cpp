@@ -245,25 +245,25 @@ int main()
 	{
 
 		//Creation of specific filenames within the given folder
-		// filename = Archive/'date-time'+filename
+		// filename = bin/'date-time'+filename
 
 		char filename_E[64];
-		sprintf(filename_E, "Archive/%s-Energies%d.txt", datespecifier, sim_iteration);
+		sprintf(filename_E, "bin/%s-Energies%d.txt", datespecifier, sim_iteration);
 
 		char filename_W[64];
-		sprintf(filename_W, "Archive/%s-walkers%d.txt", datespecifier, sim_iteration);
+		sprintf(filename_W, "bin/%s-walkers%d.txt", datespecifier, sim_iteration);
 
 		char filename_T[64];
-		sprintf(filename_T, "Archive/%s-performance%d.txt", datespecifier, sim_iteration);
+		sprintf(filename_T, "bin/%s-performance%d.txt", datespecifier, sim_iteration);
 
 		char Filename_I[64];
-		sprintf(Filename_I, "Archive/%s-Info%d.txt", datespecifier, sim_iteration);
+		sprintf(Filename_I, "bin/%s-Info%d.txt", datespecifier, sim_iteration);
 
 		char Filename_O[64];
-		sprintf(Filename_O, "Archive/%s-Other%d.txt", datespecifier, sim_iteration);
+		sprintf(Filename_O, "bin/%s-Other%d.txt", datespecifier, sim_iteration);
 
 		char Filename_H[64];
-		sprintf(Filename_H, "Archive/%s-Wavefunction%d.txt", datespecifier, sim_iteration);
+		sprintf(Filename_H, "bin/%s-Wavefunction%d.txt", datespecifier, sim_iteration);
 
 		//creates the output files and their respective pointers
 		ofstream Energy(filename_E);
