@@ -18,5 +18,8 @@ void Bias_distribution(long double, long double&, long double&, int&);
 
 void record_histogram(std::ofstream&, long double[], double, double, double);
 
+void Information_file(std::ofstream& Info, std::ofstream&, int&, long double, long double, const long double&, const int&, long double&, long double[], long double[], int&, long double&, double&);
+
+void record_snapshot(double[], double&, int&);
 
 #endif

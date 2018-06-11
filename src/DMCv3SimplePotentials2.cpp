@@ -11,96 +11,6 @@
 
 using namespace std;
 
-
-void Information_file(ofstream& Info, ofstream& Other, int& V_choice, long double m1, long double m2, const long double& N0, const int& dtn, long double& simulation_time, long double dt_array[], long double weighting[], int& dist_type, long double& average_energy, double& CPU_Time)
-{
-
-	//Function creates the information file associated with each simulation
-	// Other records the string identifier of the variable stored
-	// Info records the actual value of the information stored
-
-	if ((Info.is_open() && Other.is_open()))
-	{
-		Other << "Potential Choice" << endl;
-		Info << V_choice << endl;
-
-		Other << "Potential modifier m1" << endl;
-		Info << m1 << endl;
-
-		Other << "Potential modifier m2" << endl;
-		Info << m2 << endl;
-
-		Other << "Initial Number of Walkers" << endl;
-		Info << N0 << endl;
-
-		Other << "Total Simulation Time" << endl;
-		Info << simulation_time << endl;
-
-		Other << "Number of Timesteps used" << endl;
-		Info << dtn << endl;
-
-		Other << "Time step 1 (dt1)" << endl;
-		Info << dt_array[0] << endl;
-
-		Other << "Time step 2 (dt2)" << endl;
-		Info << dt_array[1] << endl;
-
-		Other << "Time step 3 (dt3)" << endl;
-		Info << dt_array[2] << endl;
-
-		Other << "Time step 4 (dt4)" << endl;
-		Info << dt_array[3] << endl;
-
-		Other << "Weighting dt1 (%)" << endl;
-		Info << weighting[0] << endl;
-
-		Other << "Weighting dt2 (%)" << endl;
-		Info << weighting[1] << endl;
-
-		Other << "Weighting dt3 (%)" << endl;
-		Info << weighting[2] << endl;
-
-		Other << "Weighting dt4 (%)" << endl;
-		Info << weighting[3] << endl;
-
-
-		Other << "Distribution Type" << endl;
-		Info << dist_type << endl;
-
-		Other << "Average Energy" << endl;
-		Info << average_energy << endl;
-
-		Other << "CPU Execution Time" << endl;
-		Info << CPU_Time << endl;
-	}
-
-	else
-	{
-		cerr << "Unable to record Information and Other output files - program will exit" << endl;
-	}
-
-}
-
-void record_snapshot(double array[], double& nowalkers, int& snap_number)
-{
-	char filename_Snap[64];
-	sprintf(filename_Snap, "Snapshot%d.txt", snap_number);
-	ofstream snapshot(filename_Snap);
-
-	if (snapshot.is_open())
-	{
-		for (int i = 0; i < nowalkers; i++)
-		{
-			snapshot << array[i] << endl;
-		}
-	}
-	else
-	{
-		cout << "Unable to record snapshot" << endl;
-	}
-}
-
-
 int main()
 {
 	clock_t begin, end; //used for measuring execution time
@@ -109,8 +19,8 @@ int main()
 
 					   // ---- Initializing walkerposition and histogram
 	const int hist_size = 10000, pos_size = 20000000;
-	long double* walkerpos = new long double[pos_size];
-	long double c;
+	double* walkerpos = new double[pos_size];
+	double c;
 	long double nowalkers;
 	//long double nowalkers_initial; //initial number of walkers (should be const)
 
@@ -538,7 +448,6 @@ int main()
 		cpu_time << "Execution Time = " << CPU_Time << "\tseconds" << endl;
 
 		record_histogram(Histogram, wavefunction, ij, ji, dl); //function writes histogram to file
-
 
 		cout << endl << "Average Energy = " << aveE << endl;
 
