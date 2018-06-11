@@ -21,41 +21,41 @@ int main()
 	const int hist_size = 10000, pos_size = 20000000;
 	double* walkerpos = new double[pos_size];
 	double c;
-	long double nowalkers;
-	//long double nowalkers_initial; //initial number of walkers (should be const)
+	double nowalkers;
+	// double nowalkers_initial; //initial number of walkers (should be const)
 
-	long double t; //simulation time \tau
-	long double Er = 0; // Reference energy
+	double t; //simulation time \tau
+	double Er = 0; // Reference energy
 
 						// --- Initializing Potential Modifier Parameters
-	long double m1 = 0; //modifier 1
-	long double m2 = 0; //modifier 2
+	double m1 = 0; //modifier 1
+	double m2 = 0; //modifier 2
 	int potential_choice; //potential choice variable
 
 	int dist_type; //initial distribution choice type
-	const long double ij = -10; //bin low point
-	const long double ji = 10; //bin high point
-	const long double l = 20; //bin difference
-	const long double dl = 0.1; //bin_width
+	const double ij = -10; //bin low point
+	const double ji = 10; //bin high point
+	const double l = 20; //bin difference
+	const double dl = 0.1; //bin_width
 	const int NUM_BINS = ((ji - ij) / dl) + 1;
-	long double convergence_time = 0;
+	double convergence_time = 0;
 
 	int sim_num;
 	//int dt_n;
 
-	//long double dummy_variable;
+	//double dummy_variable;
 
 	// --- Time steps and weighting ---
 	int dt_n;
-	long double dt1;
-	long double dt2;
-	long double dt3;
-	long double dt4;
-	long double dt1_lim;
-	long double dt2_lim;
-	long double dt3_lim;
-	long double dt_array[3] = { 0 };
-	long double weighting[3] = { 0 };
+	double dt1;
+	double dt2;
+	double dt3;
+	double dt4;
+	double dt1_lim;
+	double dt2_lim;
+	double dt3_lim;
+	double dt_array[3] = { 0 };
+	double weighting[3] = { 0 };
 
 // ---------------------------------------------------------------------------------------------------
 //                          USER INTERFACE VIA COMMAND WINDOW
@@ -117,12 +117,12 @@ int main()
 	// ---------- Prompts the user for the initial population size ---------------------
 	cout << "Please enter the initial walker population size: "; //Initial number of walkers
 	cin >> nowalkers;
-	const long double nowalkers_initial = nowalkers;
+	const double nowalkers_initial = nowalkers;
 
 	// ---------- Propts the user for the total simulation time ------------
 	cout << endl << "Pleas give the total simulation time (in imaginary units) t: "; //User input simulation time
 	cin >> t;
-	const long double total_time = t;
+	const double total_time = t;
 
 	// ---------- Prompts the user for the number of time steps to be used -------
 	cout << endl << "Please give the number of time steps to be used (max 4): ";
@@ -274,15 +274,15 @@ int main()
 		ofstream Histogram(Filename_H);
 
 		//------- initialized histogram to zero
-		long double wavefunction[hist_size] = { 0 }; //histogram initialization (may be implementation dependent)
+		double wavefunction[hist_size] = { 0 }; //histogram initialization (may be implementation dependent)
 
 		//------- creates the initial distribution of walkers
 		//Initial_distribution(walkerpos, nowalkers_initial, dist_type);
 
-		long double aveE = 0; //initializes average energy
+		double aveE = 0; //initializes average energy
 		begin = clock(); // obtains the clock time to begin
-		long double timestep = dt1; // initial timestep
-		long double steplength = sqrt(3 * dt1); //initial steplength
+		double timestep = dt1; // initial timestep
+		double steplength = sqrt(3 * dt1); //initial steplength
 		//Bias_distribution(walkerpos, timestep, nowalkers, sim_num);
 // -----------------------------------------------------------------------------------------------------------------------
 // 				Simulation Begins Here
@@ -342,10 +342,10 @@ int main()
 
 			steplength = sqrt(3 * timestep); //refreshes the steplength with new timestep
 
-			long double* walkerpos1 = new long double[pos_size]; //initialize pointer to copy array
+			double* walkerpos1 = new double[pos_size]; //initialize pointer to copy array
 			Er = 0; //initialize reference energy
 
-			long double avev = 0; //initialize average potential
+			double avev = 0; //initialize average potential
 
 			// ----- Moves walkers -------------
 			for (int i = 0; i < nowalkers; i++)
@@ -374,9 +374,9 @@ int main()
 			// ----- Walker population control loop
 			for (int i = 0; i < nowalkers; i++)
 			{
-				long double a; //copy variable
-				long double k = (Potential(walkerpos[i], m1, m2, potential_choice) - Er)*timestep;
-				long double m = exp(-k) + random_gen();
+				double a; //copy variable
+				double k = (Potential(walkerpos[i], m1, m2, potential_choice) - Er)*timestep;
+				double m = exp(-k) + random_gen();
 
 				if (m < 1) //death condition
 				{

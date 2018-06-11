@@ -9,7 +9,7 @@
 
 using namespace std;
 
-void progress_bar(int sim_num, long double total_time, long double current_time)
+void progress_bar(int sim_num, double total_time, double current_time)
 {
 	double progress = current_time / total_time;
 
@@ -29,11 +29,11 @@ void progress_bar(int sim_num, long double total_time, long double current_time)
 
 }
 
-long double Potential(long double& x, long double& m1, long double& m2, int& potential_choice)
+double Potential(double& x, double& m1, double& m2, int& potential_choice)
 {
 	// m1 = potential modifier 1
 	// m2 = potential modifier 2
-	long double V; //Potential Return variable (long double)
+	double V; //Potential Return variable (double)
 
 	if (potential_choice == 1) // Simple Harmonic Potential selection
 	{
@@ -66,12 +66,12 @@ long double Potential(long double& x, long double& m1, long double& m2, int& pot
 	return V;
 }
 
-void move_left(long double& position, double& step)
+void move_left(double& position, double& step)
 {
 	position = position + step;
 }
 
-void move_right(long double& position, double& step)
+void move_right(double& position, double& step)
 {
 	position = position - step;
 }
@@ -82,7 +82,7 @@ double random_gen()
 	return randm;
 }
 
-void Initial_distribution(long double walkerpos[], const long double& nowalkers, int& dist_type)
+void Initial_distribution(double walkerpos[], const double& nowalkers, int& dist_type)
 {
 	normal_distribution<double> distribution(0, 1); // mean = 0 std =1
 	unsigned seed = time(NULL); // random time seed (32 to 64 bit warning)
@@ -137,7 +137,7 @@ void Initial_distribution(long double walkerpos[], const long double& nowalkers,
 }
 
 
-void Bias_distribution(long double walkerpos[], long double& dt, long double& nowalkers_initial, int& sim_num)
+void Bias_distribution(double walkerpos[], double& dt, double& nowalkers_initial, int& sim_num)
 {
 
 	double xi; // x position variable containment
@@ -146,8 +146,8 @@ void Bias_distribution(long double walkerpos[], long double& dt, long double& no
 	double step = (xmax - xmin) / nowalkers_initial; //step size
 	double y0, y1, y2, y3, y4; //wavefunctions/ eigenstates
 	double G; //gaussian exponential
-	const long double PI = acos(-1.0L); //Defining pi with CPU precision limit
-	const long double C0 = 1 / (pow(PI, 0.25)); // coefficient  0
+	const double PI = acos(-1.0L); //Defining pi with CPU precision limit
+	const double C0 = 1 / (pow(PI, 0.25)); // coefficient  0
 	const double C1 = 1 / (sqrt(2)); // coefficient 1
 	const double C2 = 1 / (2 * sqrt(2)); //coefficient 2
 	const double C3 = 1 / (4 * sqrt(3)); // coefficient 3
@@ -172,7 +172,7 @@ void Bias_distribution(long double walkerpos[], long double& dt, long double& no
 }
 
 
-void record_histogram(std::ofstream& Histogram, long double array[], double low_bin, double high_bin, double bin_width)
+void record_histogram(std::ofstream& Histogram, double array[], double low_bin, double high_bin, double bin_width)
 {
 	//Calculate the number of bins in the histogram
 	double NUM_BINS = ((high_bin - low_bin) / bin_width) + 1;
@@ -192,7 +192,7 @@ void record_histogram(std::ofstream& Histogram, long double array[], double low_
 	}
 }
 
-void Information_file(ofstream& Info, ofstream& Other, int& V_choice, long double m1, long double m2, const long double& N0, const int& dtn, long double& simulation_time, long double dt_array[], long double weighting[], int& dist_type, long double& average_energy, double& CPU_Time)
+void Information_file(ofstream& Info, ofstream& Other, int& V_choice, double m1, double m2, const double& N0, const int& dtn, double& simulation_time, double dt_array[], double weighting[], int& dist_type, double& average_energy, double& CPU_Time)
 {
 
 	//Function creates the information file associated with each simulation

@@ -2,23 +2,23 @@
 #define functions_H
 #include <fstream>
 
-void progress_bar(int, long double, long double);
+void progress_bar(int, double, double);
 
-long double Potential(long double&, long double&, long double&, int&);
+double Potential(double&, double&, double&, int&);
 
-void move_right(long double&, double&);
+void move_right(double&, double&);
 
-void move_left(long double&, double&);
+void move_left(double&, double&);
 
 double random_gen();
 
-void Initial_distribution(long double, const long double&, int&);
+void Initial_distribution(double, const double&, int&);
 
-void Bias_distribution(long double, long double&, long double&, int&);
+void Bias_distribution(double, double&, double&, int&);
 
-void record_histogram(std::ofstream&, long double[], double, double, double);
+void record_histogram(std::ofstream&, double[], double, double, double);
 
-void Information_file(std::ofstream& Info, std::ofstream&, int&, long double, long double, const long double&, const int&, long double&, long double[], long double[], int&, long double&, double&);
+void Information_file(std::ofstream& Info, std::ofstream&, int&, double, double, const double&, const int&, double&, double[], double[], int&, double&, double&);
 
 void record_snapshot(double[], double&, int&);
 
