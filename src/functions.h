@@ -22,4 +22,6 @@ void Information_file(std::ofstream& Info, std::ofstream&, int&, double, double,
 
 void record_snapshot(double[], double&, int&);
 
+void build_histogram(double[], double[], double&, const int, const double, const double, const double, const double, double, double, double);
+
 #endif

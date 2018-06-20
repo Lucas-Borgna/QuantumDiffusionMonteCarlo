@@ -9,6 +9,14 @@
 
 using namespace std;
 
+
+//some consants
+
+
+
+
+
+
 void progress_bar(int sim_num, double total_time, double current_time)
 {
 	double progress = current_time / total_time;
@@ -277,5 +285,20 @@ void record_snapshot(double array[], double& nowalkers, int& snap_number)
 	else
 	{
 		cout << "Unable to record snapshot" << endl;
+	}
+}
+
+void build_histogram(double wavefunction[], double walkerpos[], double& nowalkers, const int NUM_BINS, const double ij, const double ji, const double l, const double dl, double convergence_time, double dt1, double t){
+
+	for (int i = 0; i < NUM_BINS; i++){
+		double lowlimit = ij - (0.5 * dl) + (i * dl);
+		double upperlimit = ij + (0.5 * dl) + (i * dl);
+
+		for (int j = 0; j < nowalkers; j++) {
+
+			if ((walkerpos[j] > lowlimit) && (walkerpos[j] <= upperlimit)){
+				wavefunction[i] = wavefunction[i] + (dt1 / (t - convergence_time * t));
+			}
+		}
 	}
 }

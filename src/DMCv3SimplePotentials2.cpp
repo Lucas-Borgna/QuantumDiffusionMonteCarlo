@@ -11,6 +11,7 @@
 
 using namespace std;
 
+
 int main()
 {
 	clock_t begin, end; //used for measuring execution time
@@ -423,8 +424,11 @@ int main()
 				//average energy calculation
 				aveE = aveE + (avev*(timestep / (t - convergence_time*t)));
 
+
+				build_histogram(wavefunction, walkerpos, nowalkers, NUM_BINS, ij, ji, l, dl, convergence_time, dt1, t);
+
 				//iterate through the histogram bins
-				for (int i = 0; i < NUM_BINS; i++)
+				/*for (int i = 0; i < NUM_BINS; i++)
 				{
 					double lowerlimit = ij - (0.5*dl) + (i*dl); //bin low limit
 					double upperlimit = ij + (0.5*dl) + (i*dl); //bin high limit
@@ -438,7 +442,7 @@ int main()
 							wavefunction[i] = wavefunction[i] + (dt1 / (t - convergence_time*t));
 						}
 					}
-				}
+				} */
 
 			}
 
