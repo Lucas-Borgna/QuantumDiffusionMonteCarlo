@@ -8,6 +8,7 @@
 #include <ctime>
 #include <cstdio>
 #include "functions.h"
+#include <string>
 
 using namespace std;
 
@@ -239,8 +240,10 @@ int main()
 		//Creation of specific filenames within the given folder
 		// filename = bin/'date-time'+filename
 
-		char filename_E[64];
-		sprintf(filename_E, "bin/%s-Energies%d.txt", datespecifier, sim_iteration);
+		//char filename_E[64];
+		//sprintf(filename_E, "bin/%s-Energies%d.txt", datespecifier, sim_iteration);
+		std::string name = "Energies";
+		ofstream Energy(output_file(datespecifier, sim_iteration, name));
 
 		char filename_W[64];
 		sprintf(filename_W, "bin/%s-walkers%d.txt", datespecifier, sim_iteration);
@@ -258,7 +261,7 @@ int main()
 		sprintf(Filename_H, "bin/%s-Wavefunction%d.txt", datespecifier, sim_iteration);
 
 		//creates the output files and their respective pointers
-		ofstream Energy(filename_E);
+		//ofstream Energy(filename_E);
 		ofstream walkers(filename_W);
 		ofstream cpu_time(filename_T);
 		ofstream Info(Filename_I);

@@ -26,4 +26,6 @@ void build_histogram(double[], double[], double&, const int, const double, const
 
 void build_datestring(char[]);
 
+std::string output_file(char[], int&, std::string);
+
 #endif

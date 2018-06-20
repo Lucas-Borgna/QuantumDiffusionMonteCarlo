@@ -3,6 +3,7 @@
 #include <math.h>
 #include <random>
 #include <time.h>
+#include <string>
 
 //User Libraries
 #include "functions.h"
@@ -314,4 +315,11 @@ void build_datestring(char datespecifier[]){
 
 	sprintf(datespecifier, "%d-%d-%d-%d-%d-%d", year, month, day, hour, min, sec);
 
+}
+
+std::string output_file(char datespecifier[],int& sim_iteration, std::string name){
+	char* filename;
+	sprintf(filename, "bin/%s-%s%d.txt", datespecifier, name, sim_iteration);
+
+	return filename;
 }
