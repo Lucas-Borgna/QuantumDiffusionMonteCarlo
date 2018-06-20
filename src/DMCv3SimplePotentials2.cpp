@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <new>
-#include <time.h>
+//#include <time.h>
 #include <ctime>
 #include <cstdio>
 #include "functions.h"
@@ -229,18 +229,9 @@ int main()
 	cout << endl;
 
 	// building of datespecifier for creation of folders and output files
-	time_t now;
-	struct tm nowLocal;
-	now = time(NULL);
-	nowLocal = *localtime(&now);
-	int year = nowLocal.tm_year + 1900;
-	int month = nowLocal.tm_mon + 1;
-	int day = nowLocal.tm_mday;
-	int hour = nowLocal.tm_hour;
-	int min = nowLocal.tm_min;
-	int sec = nowLocal.tm_sec;
+
 	char datespecifier[64];
-	sprintf(datespecifier, "%d-%d-%d-%d-%d-%d", year, month, day, hour, min, sec);
+	build_datestring(datespecifier);
 
 	for (int sim_iteration = 1; sim_iteration<(sim_num + 1); sim_iteration++)
 	{
@@ -284,7 +275,6 @@ int main()
 		begin = clock(); // obtains the clock time to begin
 		double timestep = dt1; // initial timestep
 		double steplength = sqrt(3 * dt1); //initial steplength
-		//Bias_distribution(walkerpos, timestep, nowalkers, sim_num);
 // -----------------------------------------------------------------------------------------------------------------------
 // 				Simulation Begins Here
 // -----------------------------------------------------------------------------------------------------------------------
@@ -424,25 +414,7 @@ int main()
 				//average energy calculation
 				aveE = aveE + (avev*(timestep / (t - convergence_time*t)));
 
-
 				build_histogram(wavefunction, walkerpos, nowalkers, NUM_BINS, ij, ji, l, dl, convergence_time, dt1, t);
-
-				//iterate through the histogram bins
-				/*for (int i = 0; i < NUM_BINS; i++)
-				{
-					double lowerlimit = ij - (0.5*dl) + (i*dl); //bin low limit
-					double upperlimit = ij + (0.5*dl) + (i*dl); //bin high limit
-
-					//iterate through all the walkers
-					for (int j = 0; j < nowalkers; j++)
-					{
-						//detect if walker is within the current bin window
-						if ((walkerpos[j] > lowerlimit) && (walkerpos[j] <= upperlimit))
-						{
-							wavefunction[i] = wavefunction[i] + (dt1 / (t - convergence_time*t));
-						}
-					}
-				} */
 
 			}
 

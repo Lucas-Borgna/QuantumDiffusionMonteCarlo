@@ -2,6 +2,7 @@
 #include <fstream>
 #include <math.h>
 #include <random>
+#include <time.h>
 
 //User Libraries
 #include "functions.h"
@@ -11,11 +12,6 @@ using namespace std;
 
 
 //some consants
-
-
-
-
-
 
 void progress_bar(int sim_num, double total_time, double current_time)
 {
@@ -301,4 +297,21 @@ void build_histogram(double wavefunction[], double walkerpos[], double& nowalker
 			}
 		}
 	}
+}
+
+void build_datestring(char datespecifier[]){
+	time_t now;
+	struct tm nowLocal;
+	now = time(NULL);
+	nowLocal = *localtime(&now);
+
+	int year = nowLocal.tm_year + 1900;
+	int month = nowLocal.tm_mon + 1;
+	int day = nowLocal.tm_mday;
+	int hour = nowLocal.tm_hour;
+	int min = nowLocal.tm_min;
+	int sec = nowLocal.tm_sec;
+
+	sprintf(datespecifier, "%d-%d-%d-%d-%d-%d", year, month, day, hour, min, sec);
+
 }

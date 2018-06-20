@@ -24,4 +24,6 @@ void record_snapshot(double[], double&, int&);
 
 void build_histogram(double[], double[], double&, const int, const double, const double, const double, const double, double, double, double);
 
+void build_datestring(char[]);
+
 #endif
